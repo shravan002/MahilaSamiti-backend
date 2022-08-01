@@ -21,16 +21,10 @@ public class Committee {
     private Long CommitteeId;
     private String committeeName;
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OneToMany(mappedBy = "committeeMember", fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<User> memberList = new ArrayList<>();
 
     @Column(length = 500)
     private String description;
-
-    //    Cascade: it will save the User entity first then committee entity
-//    @OneToOne
-//    @JsonManagedReference
-//    private User admin;
 }

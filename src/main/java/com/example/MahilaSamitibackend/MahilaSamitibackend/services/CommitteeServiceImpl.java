@@ -18,16 +18,14 @@ public class CommitteeServiceImpl implements CommitteeService{
     private UserService userService;
     @Override
     public Committee createCommittee(Committee committee) {
-        return committeeDao.save(committee);
+        Committee committeeSaved = committeeDao.save(committee);
+        for(User user: committeeSaved.getMemberList()){
+            User userSaved = userService.getUser(user.getMobileNumber());
+            userSaved.setCommitteeMember(committeeSaved);
+            userService.updateUser(userSaved);
+        }
+        return committeeSaved;
     }
-//    @Override
-//    public Committee createCommittee(Committee committee) {
-//        Committee committeeSaved = committeeDao.save(committee);
-//        for(User user: committeeSaved.getMemberList()){
-//            User userSaved = userService.getUser(user.getMobileNumber());
-//            userService.updateUser(userSaved.setCommitteeMember(committeeSaved));
-//        }
-//    }
 
     @Override
     public Optional<Committee> getCommittee(Long id) {
