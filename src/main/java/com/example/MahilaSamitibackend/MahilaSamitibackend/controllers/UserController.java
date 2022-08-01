@@ -28,8 +28,7 @@ public class UserController {
 
     @GetMapping("/users/{userId}")
     public User getUser(@PathVariable String userId){
-        Optional<User> user = userService.getUser(Long.parseLong(userId));
-        return user.get();
+        return userService.getUser(Long.parseLong(userId));
     }
 
     @PostMapping("/user")
