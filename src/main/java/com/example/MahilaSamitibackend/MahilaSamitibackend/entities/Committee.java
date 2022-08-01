@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @ToString
@@ -18,11 +19,12 @@ public class Committee {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long CommitteeId;
+    private String committeeName;
 
-    //Cascade: it will save the User entity first then committee entity
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "committeeMember", fetch = FetchType.EAGER)
     @JsonManagedReference
-    private User admin;
+    private List<User> memberList = new ArrayList<>();
 
-    private String CommitteeName;
+    @Column(length = 500)
+    private String description;
 }

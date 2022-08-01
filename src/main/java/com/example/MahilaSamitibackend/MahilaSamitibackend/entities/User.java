@@ -16,14 +16,13 @@ public class User {
 
     @Id
     private long mobileNumber;
-
     private String name;
+    private String role;
+
+    @ManyToOne
+    @JsonBackReference
+    private Committee committeeMember;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
-    @OneToOne(mappedBy = "admin")
-    @JsonBackReference
-    private Committee committee;
-
 }
