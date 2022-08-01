@@ -1,9 +1,9 @@
 package com.example.MahilaSamitibackend.MahilaSamitibackend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
-
 
 @ToString
 @Getter
@@ -17,10 +17,13 @@ public class User {
     @Id
     private long mobileNumber;
 
-    @Column
     private String name;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @OneToOne(mappedBy = "admin")
+    @JsonBackReference
+    private Committee committee;
 
 }

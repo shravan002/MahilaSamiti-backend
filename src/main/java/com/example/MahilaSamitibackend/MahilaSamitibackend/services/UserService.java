@@ -9,10 +9,10 @@ public interface UserService {
     public List<User> getUsers();
     public Optional<User> getUser(Long id);
 
-    User createUser(User user);
+    public User createUser(User user);
 
-    User updateUser(User user);
+    public User updateUser(User user);
 
-    void deleteUser(long courseId);
+    public void deleteUser(long courseId);
 }
 
