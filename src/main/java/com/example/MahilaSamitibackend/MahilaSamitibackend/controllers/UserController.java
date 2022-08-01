@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class MyController {
+public class UserController {
 
     @Autowired
     UserService userService;
