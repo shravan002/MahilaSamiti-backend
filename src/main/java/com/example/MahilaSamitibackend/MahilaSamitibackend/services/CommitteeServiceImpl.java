@@ -20,8 +20,8 @@ public class CommitteeServiceImpl implements CommitteeService{
     public Committee createCommittee(Committee committee) {
         Committee committeeSaved = committeeDao.save(committee);
         for(User user: committeeSaved.getMemberList()){
-            User userSaved = userService.getUser(user.getMobileNumber());
-            userSaved.setCommitteeMember(committeeSaved);
+            User userSaved = userService.getUser(user.getUserId());
+            userSaved.setCommittee(committeeSaved);
             userService.updateUser(userSaved);
         }
         return committeeSaved;
@@ -40,5 +40,13 @@ public class CommitteeServiceImpl implements CommitteeService{
     public void deleteCommittee(Long id) {
         Committee committee = committeeDao.getOne(id);
         committeeDao.delete(committee);
+    }
+
+    @Override
+    public Committee addNewUserToCommittee(User user, Long committeeId) {
+        Committee fetchedCommittee = committeeDao.findById(committeeId).get();
+        user.setCommittee(fetchedCommittee);
+        userService.createUser(user);
+        return committeeDao.findById(committeeId).get();
     }
 }

@@ -5,9 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@ToString
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -15,13 +13,16 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    private long mobileNumber;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long userId;
+
+    private String mobileNumber;
     private String name;
     private String role;
 
     @ManyToOne
     @JsonBackReference
-    private Committee committeeMember;
+    private Committee committee;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;

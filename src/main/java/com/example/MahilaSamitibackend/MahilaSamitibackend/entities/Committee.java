@@ -7,11 +7,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name="committee")
 public class Committee {
@@ -19,9 +17,10 @@ public class Committee {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long CommitteeId;
+
     private String committeeName;
 
-    @OneToMany(mappedBy = "committeeMember", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "committee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<User> memberList = new ArrayList<>();
 
