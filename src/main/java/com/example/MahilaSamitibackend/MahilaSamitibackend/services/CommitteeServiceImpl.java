@@ -28,8 +28,12 @@ public class CommitteeServiceImpl implements CommitteeService{
     }
 
     @Override
-    public Optional<Committee> getCommittee(Long id) {
-        return committeeDao.findById(id);
+    public Committee getCommittee(Long id) {
+        Optional<Committee> committee = committeeDao.findById(id);
+        if(committee.isPresent())
+            return committee.get();
+        else
+            throw new RuntimeException();
     }
 
     @Override

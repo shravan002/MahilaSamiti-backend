@@ -22,8 +22,7 @@ public class CommitteeController {
 
     @GetMapping("/committee/{committeeId}")
     public Committee getCommittee(@PathVariable String committeeId){
-        Optional<Committee> committee = committeeService.getCommittee(Long.parseLong(committeeId));
-        return committee.get();
+        return committeeService.getCommittee(Long.parseLong(committeeId));
     }
 
     @DeleteMapping("/committee/{committeeId}")
