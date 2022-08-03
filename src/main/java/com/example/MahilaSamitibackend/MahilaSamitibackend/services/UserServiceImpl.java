@@ -1,13 +1,11 @@
 package com.example.MahilaSamitibackend.MahilaSamitibackend.services;
 
 import com.example.MahilaSamitibackend.MahilaSamitibackend.dao.UserDao;
-import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Committee;
 import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {

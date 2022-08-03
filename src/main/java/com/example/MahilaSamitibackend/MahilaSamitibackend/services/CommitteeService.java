@@ -5,10 +5,11 @@ import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.User;
 
 public interface CommitteeService {
 
-    public Committee createCommittee(Committee committee);
-    public Committee getCommittee(Long id);
+    Committee createCommittee(Committee committee);
 
-    public void deleteCommittee(Long id);
+    Committee getCommittee(Long id);
+
+    void deleteCommittee(Long id);
 
     Committee addNewUserToCommittee(User user, Long committeeId);
 }

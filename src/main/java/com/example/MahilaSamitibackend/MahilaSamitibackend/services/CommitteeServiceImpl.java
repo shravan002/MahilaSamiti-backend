@@ -9,17 +9,18 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CommitteeServiceImpl implements CommitteeService{
+public class CommitteeServiceImpl implements CommitteeService {
 
     @Autowired
     private CommitteeDao committeeDao;
 
     @Autowired
     private UserService userService;
+
     @Override
     public Committee createCommittee(Committee committee) {
         Committee committeeSaved = committeeDao.save(committee);
-        for(User user: committeeSaved.getMemberList()){
+        for (User user : committeeSaved.getMemberList()) {
             User userSaved = userService.getUser(user.getUserId());
             userSaved.setCommittee(committeeSaved);
             userService.updateUser(userSaved);
@@ -30,10 +31,8 @@ public class CommitteeServiceImpl implements CommitteeService{
     @Override
     public Committee getCommittee(Long id) {
         Optional<Committee> committee = committeeDao.findById(id);
-        if(committee.isPresent())
-            return committee.get();
-        else
-            throw new RuntimeException();
+        if (committee.isPresent()) return committee.get();
+        else throw new RuntimeException();
     }
 
     @Override

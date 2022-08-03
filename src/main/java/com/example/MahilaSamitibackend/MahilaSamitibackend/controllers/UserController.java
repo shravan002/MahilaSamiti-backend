@@ -17,36 +17,36 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/home")
-    public String home(){
+    public String home() {
         return "This is home page";
     }
 
     @GetMapping("/users")
-    public List<User> getCourse(){
+    public List<User> getCourse() {
         return userService.getUsers();
     }
 
     @GetMapping("/users/{userId}")
-    public User getUser(@PathVariable String userId){
+    public User getUser(@PathVariable String userId) {
         return userService.getUser(Long.parseLong(userId));
     }
 
     @PostMapping("/user")
-    public User createCourse(@RequestBody User user){
+    public User createCourse(@RequestBody User user) {
         return userService.createUser(user);
     }
 
     @PutMapping("/user")
-    public User updateCourse(@RequestBody User user){
+    public User updateCourse(@RequestBody User user) {
         return userService.updateUser(user);
     }
 
     @DeleteMapping("/user/{userId}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable String userId){
-        try{
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable String userId) {
+        try {
             userService.deleteUser(Long.parseLong(userId));
             return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
