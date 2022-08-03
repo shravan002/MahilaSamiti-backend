@@ -1,10 +1,11 @@
 package com.example.MahilaSamitibackend.MahilaSamitibackend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
-
+//todo Refactor from User to member
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,7 +24,4 @@ public class User {
     @ManyToOne
     @JsonBackReference
     private Committee committee;
-
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
 }

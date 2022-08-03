@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
         return userDao.save(user);
     }
 
+    //todo use findById
     @Override
     public void deleteUser(long userId) {
         User user = userDao.getOne(userId);

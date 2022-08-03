@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//todo generalize controllers path
 @RestController
 public class UserController {
 

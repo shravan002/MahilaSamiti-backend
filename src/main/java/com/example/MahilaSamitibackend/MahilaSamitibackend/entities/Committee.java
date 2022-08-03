@@ -24,6 +24,16 @@ public class Committee {
     @JsonManagedReference
     private List<User> memberList = new ArrayList<>();
 
-    @Column(length = 500)
-    private String description;
+    //Values expected in terms of month
+    private int committeeLife;
+    //MPR: Monthly percentage rate
+    private int mpr;
+
+    @Enumerated(EnumType.STRING)
+    private CollectionFrequency collectionFrequency;
+
+    private Long totalBalance;
+    private Long lentAmount;
+    private Long interestBalance;
+
 }
