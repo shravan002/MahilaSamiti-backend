@@ -8,29 +8,39 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-//todo generalize controllers path
 @RestController
+@RequestMapping(("/committee"))
 public class CommitteeController {
 
     @Autowired
     CommitteeService committeeService;
 
-    @PostMapping("/committee")
+    @PostMapping
     public Committee createCommittee(@RequestBody Committee committee) {
         return committeeService.createCommittee(committee);
     }
 
-    @PostMapping("/committee/{committeeId}/user")
-    public Committee addUserToCommittee(@RequestBody User user, @PathVariable String committeeId) {
+    @PostMapping("/{committeeId}/user")
+    public User addUserToCommittee(@RequestBody User user, @PathVariable String committeeId) {
         return committeeService.addNewUserToCommittee(user, Long.parseLong(committeeId));
     }
 
-    @GetMapping("/committee/{committeeId}")
+    @GetMapping("/{committeeId}")
     public Committee getCommittee(@PathVariable String committeeId) {
         return committeeService.getCommittee(Long.parseLong(committeeId));
     }
 
-    @DeleteMapping("/committee/{committeeId}")
+    @PutMapping
+    public Committee updateCommitteInfo(@RequestBody Committee committee){
+        return committeeService.updateCommittee(committee);
+    }
+
+    @PutMapping("/{committeeId}/user")
+    public User updateUserInfo(@RequestBody User user, @PathVariable String committeeId){
+        return committeeService.updateUser(user, Long.parseLong(committeeId));
+    }
+
+    @DeleteMapping("/{committeeId}")
     public ResponseEntity<HttpStatus> deleteCommittee(@PathVariable String committeeId) {
         try {
             committeeService.deleteCommittee(Long.parseLong(committeeId));

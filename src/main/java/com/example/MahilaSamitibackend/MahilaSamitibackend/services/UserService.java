@@ -7,12 +7,12 @@ import java.util.List;
 public interface UserService {
     List<User> getUsers();
 
-    User getUser(Long id);
+    User getUser(Long userId);
 
     User createUser(User user);
 
     User updateUser(User user);
 
-    void deleteUser(long courseId);
+    void deleteUser(Long userId);
 }
 

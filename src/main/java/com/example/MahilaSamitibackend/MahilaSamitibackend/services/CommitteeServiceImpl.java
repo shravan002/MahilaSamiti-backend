@@ -29,6 +29,13 @@ public class CommitteeServiceImpl implements CommitteeService {
     }
 
     @Override
+    public User addNewUserToCommittee(User user, Long committeeId) {
+        Committee fetchedCommittee = committeeDao.findById(committeeId).get();
+        user.setCommittee(fetchedCommittee);
+        return userService.createUser(user);
+    }
+
+    @Override
     public Committee getCommittee(Long id) {
         Optional<Committee> committee = committeeDao.findById(id);
         if (committee.isPresent()) return committee.get();
@@ -36,16 +43,20 @@ public class CommitteeServiceImpl implements CommitteeService {
     }
 
     @Override
-    public void deleteCommittee(Long id) {
-        Committee committee = committeeDao.getOne(id);
-        committeeDao.delete(committee);
+    public Committee updateCommittee(Committee committee) {
+        return committeeDao.save(committee);
     }
 
     @Override
-    public Committee addNewUserToCommittee(User user, Long committeeId) {
+    public User updateUser(User user, long committeeId) {
         Committee fetchedCommittee = committeeDao.findById(committeeId).get();
         user.setCommittee(fetchedCommittee);
-        userService.createUser(user);
-        return committeeDao.findById(committeeId).get();
+        return userService.updateUser(user);
+    }
+
+    @Override
+    public void deleteCommittee(Long id) {
+        Committee committee = committeeDao.getOne(id);
+        committeeDao.delete(committee);
     }
 }

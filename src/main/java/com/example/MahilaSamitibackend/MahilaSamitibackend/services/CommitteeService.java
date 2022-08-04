@@ -7,9 +7,13 @@ public interface CommitteeService {
 
     Committee createCommittee(Committee committee);
 
+    User addNewUserToCommittee(User user, Long committeeId);
+
     Committee getCommittee(Long id);
 
-    void deleteCommittee(Long id);
+    Committee updateCommittee(Committee committee);
 
-    Committee addNewUserToCommittee(User user, Long committeeId);
+    User updateUser(User user, long parseLong);
+
+    void deleteCommittee(Long id);
 }

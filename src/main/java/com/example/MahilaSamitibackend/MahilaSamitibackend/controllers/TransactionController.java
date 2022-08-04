@@ -8,17 +8,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/transaction")
 public class TransactionController {
 
     @Autowired
     TransactionService transactionService;
 
-    @PostMapping("/transaction")
+    @PostMapping
     Transaction addNewTransaction(@RequestBody Transaction transaction) {
         return transactionService.addTransaction(transaction);
     }
 
-    @GetMapping("/transaction/user/{userId}")
+    @GetMapping("/user/{userId}")
     List<Transaction> getTransactionList(@PathVariable String userId) {
         return transactionService.getTransactions(userId);
     }
