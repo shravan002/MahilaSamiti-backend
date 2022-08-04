@@ -21,7 +21,7 @@ public class CommitteeServiceImpl implements CommitteeService {
     public Committee createCommittee(Committee committee) {
         Committee committeeSaved = committeeDao.save(committee);
         for (User user : committeeSaved.getMemberList()) {
-            User userSaved = userService.getUser(user.getUserId());
+            User userSaved = userService.getUser(user.getId());
             userSaved.setCommittee(committeeSaved);
             userService.updateUser(userSaved);
         }
@@ -30,6 +30,7 @@ public class CommitteeServiceImpl implements CommitteeService {
 
     @Override
     public User addNewUserToCommittee(User user, Long committeeId) {
+        //todo get() is present check
         Committee fetchedCommittee = committeeDao.findById(committeeId).get();
         user.setCommittee(fetchedCommittee);
         return userService.createUser(user);
@@ -49,6 +50,7 @@ public class CommitteeServiceImpl implements CommitteeService {
 
     @Override
     public User updateUser(User user, long committeeId) {
+        //todo get() is present check
         Committee fetchedCommittee = committeeDao.findById(committeeId).get();
         user.setCommittee(fetchedCommittee);
         return userService.updateUser(user);

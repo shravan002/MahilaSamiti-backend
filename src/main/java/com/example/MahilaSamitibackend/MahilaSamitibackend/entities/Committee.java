@@ -18,16 +18,16 @@ public class Committee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long CommitteeId;
+    private Long id;
 
-    private String committeeName;
+    private String name;
 
     @OneToMany(mappedBy = "committee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<User> memberList = new ArrayList<>();
 
     //Values expected in terms of month
-    private int committeeLife;
+    private int life;
     //MPR: Monthly percentage rate
     private int mpr;
 

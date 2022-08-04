@@ -14,11 +14,11 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long transactionId;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
-    private TransactionType transactionType;
+    private TransactionType type;
 
     private Long amount;
-    private String user;
+    private String userId;
 }

@@ -20,6 +20,6 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public List<Transaction> getTransactions(String userId) {
-        return transactionDao.findTransactionByUser(userId);
+        return transactionDao.findTransactionByUserId(userId);
     }
 }

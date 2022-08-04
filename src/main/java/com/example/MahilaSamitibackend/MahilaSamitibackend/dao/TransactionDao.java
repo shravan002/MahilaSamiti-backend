@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface TransactionDao extends JpaRepository<Transaction, Long> {
-    //todo findTransactionByUser -> findTransactionByUserId
-    List<Transaction> findTransactionByUser(String userId);
+    List<Transaction> findTransactionByUserId(String userId);
 }
