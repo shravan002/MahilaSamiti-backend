@@ -19,7 +19,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<Transaction> getTransactions(String userId) {
-        return transactionDao.findTransactionByUserId(userId);
+    public List<Transaction> getTransactions(String memberId) {
+        return transactionDao.findTransactionByMemberId(memberId);
     }
 }

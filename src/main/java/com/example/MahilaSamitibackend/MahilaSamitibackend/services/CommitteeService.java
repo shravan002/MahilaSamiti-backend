@@ -1,19 +1,19 @@
 package com.example.MahilaSamitibackend.MahilaSamitibackend.services;
 
 import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Committee;
-import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.User;
+import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Member;
 
 public interface CommitteeService {
 
     Committee createCommittee(Committee committee);
 
-    User addNewUserToCommittee(User user, Long committeeId);
+    Member addNewMemberToCommittee(Member member, Long committeeId);
 
     Committee getCommittee(Long id);
 
     Committee updateCommittee(Committee committee);
 
-    User updateUser(User user, long parseLong);
+    Member updateMember(Member member, long parseLong);
 
     void deleteCommittee(Long id);
 }

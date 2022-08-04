@@ -7,5 +7,5 @@ import java.util.List;
 public interface TransactionService {
     Transaction addTransaction(Transaction transaction);
 
-    List<Transaction> getTransactions(String userId);
+    List<Transaction> getTransactions(String memberId);
 }

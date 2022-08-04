@@ -19,8 +19,8 @@ public class TransactionController {
         return transactionService.addTransaction(transaction);
     }
 
-    @GetMapping("/user/{userId}")
-    List<Transaction> getTransactionList(@PathVariable String userId) {
-        return transactionService.getTransactions(userId);
+    @GetMapping("/member/{memberId}")
+    List<Transaction> getTransactionList(@PathVariable String memberId) {
+        return transactionService.getTransactions(memberId);
     }
 }

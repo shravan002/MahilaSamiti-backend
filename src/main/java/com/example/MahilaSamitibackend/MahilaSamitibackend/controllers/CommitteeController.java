@@ -1,7 +1,7 @@
 package com.example.MahilaSamitibackend.MahilaSamitibackend.controllers;
 
 import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Committee;
-import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.User;
+import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Member;
 import com.example.MahilaSamitibackend.MahilaSamitibackend.services.CommitteeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +20,9 @@ public class CommitteeController {
         return committeeService.createCommittee(committee);
     }
 
-    @PostMapping("/{committeeId}/user")
-    public User addUserToCommittee(@RequestBody User user, @PathVariable String committeeId) {
-        return committeeService.addNewUserToCommittee(user, Long.parseLong(committeeId));
+    @PostMapping("/{committeeId}/member")
+    public Member addMemberToCommittee(@RequestBody Member member, @PathVariable String committeeId) {
+        return committeeService.addNewMemberToCommittee(member, Long.parseLong(committeeId));
     }
 
     @GetMapping("/{committeeId}")
@@ -31,13 +31,13 @@ public class CommitteeController {
     }
 
     @PutMapping
-    public Committee updateCommitteInfo(@RequestBody Committee committee){
+    public Committee updateCommitteInfo(@RequestBody Committee committee) {
         return committeeService.updateCommittee(committee);
     }
 
-    @PutMapping("/{committeeId}/user")
-    public User updateUserInfo(@RequestBody User user, @PathVariable String committeeId){
-        return committeeService.updateUser(user, Long.parseLong(committeeId));
+    @PutMapping("/{committeeId}/member")
+    public Member updateMemberInfo(@RequestBody Member member, @PathVariable String committeeId) {
+        return committeeService.updateMember(member, Long.parseLong(committeeId));
     }
 
     @DeleteMapping("/{committeeId}")

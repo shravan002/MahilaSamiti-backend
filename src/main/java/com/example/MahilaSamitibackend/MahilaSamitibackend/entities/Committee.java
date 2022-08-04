@@ -24,7 +24,7 @@ public class Committee {
 
     @OneToMany(mappedBy = "committee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<User> memberList = new ArrayList<>();
+    private List<Member> memberList = new ArrayList<>();
 
     //Values expected in terms of month
     private int life;

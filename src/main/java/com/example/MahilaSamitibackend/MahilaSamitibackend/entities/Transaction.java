@@ -20,5 +20,5 @@ public class Transaction {
     private TransactionType type;
 
     private Long amount;
-    private String userId;
+    private String memberId;
 }

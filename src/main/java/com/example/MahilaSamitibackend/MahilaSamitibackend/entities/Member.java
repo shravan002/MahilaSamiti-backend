@@ -7,12 +7,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-//todo Refactor from User to member
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

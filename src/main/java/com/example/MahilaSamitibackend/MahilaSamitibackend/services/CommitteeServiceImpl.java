@@ -2,7 +2,7 @@ package com.example.MahilaSamitibackend.MahilaSamitibackend.services;
 
 import com.example.MahilaSamitibackend.MahilaSamitibackend.dao.CommitteeDao;
 import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Committee;
-import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.User;
+import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,25 +15,25 @@ public class CommitteeServiceImpl implements CommitteeService {
     private CommitteeDao committeeDao;
 
     @Autowired
-    private UserService userService;
+    private MemberService memberService;
 
     @Override
     public Committee createCommittee(Committee committee) {
         Committee committeeSaved = committeeDao.save(committee);
-        for (User user : committeeSaved.getMemberList()) {
-            User userSaved = userService.getUser(user.getId());
-            userSaved.setCommittee(committeeSaved);
-            userService.updateUser(userSaved);
+        for (Member member : committeeSaved.getMemberList()) {
+            Member memberSaved = memberService.getMember(member.getId());
+            memberSaved.setCommittee(committeeSaved);
+            memberService.updateMember(memberSaved);
         }
         return committeeSaved;
     }
 
     @Override
-    public User addNewUserToCommittee(User user, Long committeeId) {
+    public Member addNewMemberToCommittee(Member member, Long committeeId) {
         //todo get() is present check
         Committee fetchedCommittee = committeeDao.findById(committeeId).get();
-        user.setCommittee(fetchedCommittee);
-        return userService.createUser(user);
+        member.setCommittee(fetchedCommittee);
+        return memberService.createMember(member);
     }
 
     @Override
@@ -49,11 +49,11 @@ public class CommitteeServiceImpl implements CommitteeService {
     }
 
     @Override
-    public User updateUser(User user, long committeeId) {
+    public Member updateMember(Member member, long committeeId) {
         //todo get() is present check
         Committee fetchedCommittee = committeeDao.findById(committeeId).get();
-        user.setCommittee(fetchedCommittee);
-        return userService.updateUser(user);
+        member.setCommittee(fetchedCommittee);
+        return memberService.updateMember(member);
     }
 
     @Override
