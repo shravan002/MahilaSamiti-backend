@@ -1,28 +1,27 @@
 package com.example.MahilaSamitibackend.MahilaSamitibackend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@ToString
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user")
-public class User {
+public class Member {
 
     @Id
-    private long mobileNumber;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    private String mobileNumber;
     private String name;
     private String role;
 
     @ManyToOne
     @JsonBackReference
-    private Committee committeeMember;
-
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private Committee committee;
 }

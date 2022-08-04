@@ -1,13 +1,19 @@
 package com.example.MahilaSamitibackend.MahilaSamitibackend.services;
 
 import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Committee;
-
-import java.util.Optional;
+import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Member;
 
 public interface CommitteeService {
 
-    public Committee createCommittee(Committee committee);
-    public Optional<Committee> getCommittee(Long id);
+    Committee createCommittee(Committee committee);
 
-    public void deleteCommittee(Long id);
+    Member addNewMemberToCommittee(Member member, Long committeeId);
+
+    Committee getCommittee(Long id);
+
+    Committee updateCommittee(Committee committee);
+
+    Member updateMember(Member member, long parseLong);
+
+    void deleteCommittee(Long id);
 }

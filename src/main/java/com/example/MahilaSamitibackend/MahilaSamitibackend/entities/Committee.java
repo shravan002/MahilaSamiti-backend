@@ -1,30 +1,41 @@
 package com.example.MahilaSamitibackend.MahilaSamitibackend.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity
-@Table(name="committee")
+@Table(name = "committee")
 public class Committee {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long CommitteeId;
-    private String committeeName;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @OneToMany(mappedBy = "committeeMember", fetch = FetchType.EAGER)
+    private String name;
+
+    @OneToMany(mappedBy = "committee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<User> memberList = new ArrayList<>();
+    private List<Member> memberList = new ArrayList<>();
 
-    @Column(length = 500)
-    private String description;
+    //Values expected in terms of month
+    private int life;
+    //MPR: Monthly percentage rate
+    private int mpr;
+
+    @Enumerated(EnumType.STRING)
+    private CollectionFrequency collectionFrequency;
+
+    private Long totalBalance;
+    private Long lentAmount;
+    private Long interestBalance;
+
 }
