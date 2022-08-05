@@ -1,5 +1,6 @@
 package com.example.MahilaSamitibackend.MahilaSamitibackend.controllers;
 
+import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Member;
 import com.example.MahilaSamitibackend.MahilaSamitibackend.entities.Transaction;
 import com.example.MahilaSamitibackend.MahilaSamitibackend.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class TransactionController {
 
     @PostMapping
     Transaction addNewTransaction(@RequestBody Transaction transaction) {
+        //todo try catch for EnumConstantNotPresentException
         return transactionService.addTransaction(transaction);
     }
 
