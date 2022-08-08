@@ -22,6 +22,8 @@ public class Member {
     private String mobileNumber;
     private String name;
     private String role;
+    //It is marker to identify in the Scheduler that "Is the user eligible for Minimum due calculation
+    private boolean minDueEligibility;
     //todo break the entity
     //outstandingAmount: 4000
     private long outstandingAmount;
